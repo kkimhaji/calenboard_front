@@ -1,4 +1,4 @@
-let url = "http://localhost:8082/signup";
+let url = "http://localhost:8082/signin";
 
 const $form = document.querySelector('#form');
 
@@ -15,8 +15,12 @@ $form.addEventListener('submit', ()=>{
         cache:false,
         contentType: false,
         processData: false,
+        beforeSend: function(jqXHR) {
+            console.log(sdata);
+        },
         success: function (jqXHR){
-            window.location.href = '/html/login';
+
+            console.log(sdata);
         },
         error: function (jqXHR, textStatus, errorThrown){
             console.log(sdata);
