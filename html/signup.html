@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 페이지</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <form id="form" class= "form-signin" method="post">
+        <h1 class="form-signin-heading">Sign Up</h1>
+        <br>
+        <p>
+            <label for="email" class="sr-only">Email</label>
+            <input type="text" name="email" class="form-control" placeholder="이메일 입력해주세요"required autofocus>
+        </p>
+        <p>
+            <label for="nickname" class="sr-only">Name</label>
+            <input type="text" name="nickname" class="form-control" placeholder="닉네임을 입력해주세요" required>
+
+        </p>
+        <p>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password"class="form-control" placeholder="비밀번호를 입력해주세요." required>
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">회원가입</button>
+    </form>
+</div>
+</body>
+<script src="/js/signup.js"></script>
+
+</html>
