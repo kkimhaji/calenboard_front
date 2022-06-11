@@ -15,14 +15,20 @@ $form.addEventListener('submit', ()=>{
         cache:false,
         contentType: false,
         processData: false,
-        success: function (jqXHR){
-            window.location.href = '/html/login';
+        success: function (result){
+            console.log(result);
+            window.location = "login";
         },
         error: function (jqXHR, textStatus, errorThrown){
             console.log(sdata);
             console.log(textStatus);
         }
     })
+    // .done(function(json){
+    //     console.log(json);
+    //     window.location.href = 'http://localhost:3000/login';
+
+    // })
     
 });
 

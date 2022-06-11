@@ -1,8 +1,7 @@
 let date = new Date(); //현재
 let nowDate;
 let ym = "";
-// axios.defaults.baseURL = 'https://www.kaen.com';
-axios.defaults.withCredntials = true;
+
 
 const renderCalender = () => {
     const viewYear = date.getFullYear();
