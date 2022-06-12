@@ -52,7 +52,7 @@ const renderCalender = () => {
         day.addEventListener('click', function (){
             nowDate = ym + day.innerText.padStart(2, '0');
             $.ajax({
-                url: `board?date=${nowDate}`,
+                url: `http://localhost:8082/board?date=${nowDate}`,
                 type: 'GET',
                 header:{"X-AUTH-TOKEN": localStorage.getItem("token")},
                 success: function (result){
