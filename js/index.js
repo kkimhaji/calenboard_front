@@ -54,7 +54,7 @@ const renderCalender = () => {
             $.ajax({
                 url: `board?date=${nowDate}`,
                 type: 'GET',
-                header:{"X-AUTH-TOKEN": ""},
+                header:{"X-AUTH-TOKEN": localStorage.getItem("token")},
                 success: function (result){
                     console.log(result);
                 },
