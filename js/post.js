@@ -1,5 +1,10 @@
 let url = "http://localhost:8082/board/post";
 const $form = document.querySelector('#form');
+const nowDate = location.href.split('?')[1];
+
+const $date = document.querySelector('#date');
+
+$date.value = nowDate;
 
 $form.addEventListener('submit', (e)=>{
     e.preventDefault();

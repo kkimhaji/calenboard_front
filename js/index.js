@@ -1,12 +1,13 @@
 let date = new Date(); //현재
 let nowDate;
 let ym = "";
+let url = "http://localhost:8082/board/";
 
 
 const renderCalender = () => {
     const viewYear = date.getFullYear();
     const viewMonth = date.getMonth();
-    let month = viewMonth.toString().padStart(2, '0');
+    let month = (viewMonth+1).toString().padStart(2, '0');
     // month.toString().length < 2 ? '0' + month : month;
     ym = viewYear+"-"+month+"-";
 
@@ -51,12 +52,20 @@ const renderCalender = () => {
     $day.forEach((day)=>{
         day.addEventListener('click', function (){
             nowDate = ym + day.innerText.padStart(2, '0');
+            console.log("nowDate: " , nowDate);
+            localStorage.setItem("nowDate", nowDate);
             $.ajax({
-                url: `http://localhost:8082/board?date=${nowDate}`,
+                url: `http://localhost:8082/board/postexist?nowDate=${nowDate}`,
                 type: 'GET',
-                header:{"X-AUTH-TOKEN": localStorage.getItem("token")},
-                success: function (result){
-                    console.log(result);
+                dataType:'json',
+                headers:{"X-AUTH-TOKEN": sessionStorage.getItem("X-AUTH-TOKEN")},
+                success: function (response){
+                    console.log(response);
+                    if(response){
+                        window.location = `board/view?${nowDate}`;
+                    }else{
+                        window.location = `board/post?${nowDate}`;
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown){
                     console.log(textStatus);

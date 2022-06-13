@@ -6,8 +6,10 @@
  
 </head>
 <body>
+    <header><h1>Calen-Board</h1></header>
+
     <div id="board_write">
-        <h4>글을 작성하는 공간입니다.</h4>
+        <h3>글 작성</h3>
             <div id="write_area">
                 <form  method="post" id="form" enctype="multipart/form-data">
                     <div id="in_title">
@@ -16,7 +18,7 @@
  
                     <div class="wi_line"></div>
                     <div id="in_content">
-                        <textarea name="content" id="content" placeholder="내용" required></textarea>
+                        <textarea name="content" id="content" rows="30" cols="55" placeholder="내용" required></textarea>
                     </div>
                         <div>
                             <input type="localdate" id="date" name="date" placeholder="등록할 날짜를 입력해주세요">
@@ -28,6 +30,8 @@
                 </form>
             </div>
         </div>
+        <footer>Project for Portal Class</footer>
+
     </body>
     <script src="/js/post.js"></script>
 </html>
