@@ -2,25 +2,26 @@
 <head>
 <meta charset="UTF-8">
 <title>글 작성</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
  
 </head>
 <body>
     <div id="board_write">
         <h4>글을 작성하는 공간입니다.</h4>
             <div id="write_area">
-                <form enctype="multipart/form-data" method="post">
+                <form  method="post" id="form" enctype="multipart/form-data">
                     <div id="in_title">
-                        <textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100" required></textarea>
+                        <textarea name="title" id="title" rows="1" cols="55" placeholder="제목" maxlength="100" required></textarea>
                     </div>
  
                     <div class="wi_line"></div>
                     <div id="in_content">
-                        <textarea name="content" id="ucontent" placeholder="내용" required></textarea>
+                        <textarea name="content" id="content" placeholder="내용" required></textarea>
                     </div>
- 
-                      <input type="file" name="SelectFile" />
- 
-                    <buttion type="upload">사진 업로드</buttion>
+                        <div>
+                            <input type="localdate" id="date" name="date" placeholder="등록할 날짜를 입력해주세요">
+                        </div>
+                      <input type="file" name="uploadFiles" multiple />
                     <div class="bt_se">
                         <button type="submit">글 작성</button>
                     </div>
@@ -28,4 +29,5 @@
             </div>
         </div>
     </body>
+    <script src="/js/post.js"></script>
 </html>

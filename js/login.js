@@ -1,5 +1,5 @@
 let url = "http://localhost:8082/signin";
-var xhr = new XMLHttpRequest();
+
 const $form = document.querySelector('#form');
 
 $form.addEventListener('submit', (e)=>{
@@ -23,7 +23,7 @@ $form.addEventListener('submit', (e)=>{
         success: function (response){
             console.log(response);
             window.location = "/";
-            if(response.data) localStorage.setItem("token", response.data);
+            if(response.data) sessionStorage.setItem("X-AUTH-TOKEN", response.data);
         },
         error: function (jqXHR, textStatus, errorThrown){
             console.log("fail");

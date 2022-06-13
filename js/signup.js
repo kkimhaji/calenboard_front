@@ -7,7 +7,8 @@ $form.addEventListener('submit', (e)=>{
     let sdata = new URLSearchParams();
     sdata.append('email', document.querySelector('[name="email"]').value);
     sdata.append('password', document.querySelector('[name="password"]').value);
-    sdata.append('nickname', document.querySelector('[name="nickname"]').value)
+    sdata.append('nickname', document.querySelector('[name="nickname"]').value);
+    
     $.ajax({
         url: url,
         type: 'POST',
@@ -26,11 +27,6 @@ $form.addEventListener('submit', (e)=>{
             console.log(textStatus);
         }
     })
-    // .done(function(json){
-    //     console.log(json);
-    //     window.location.href = 'http://localhost:3000/login';
-
-    // })
     
 });
 
