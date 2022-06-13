@@ -13,6 +13,5 @@ $.ajax({
         $title.innerHTML = "<h3>"+response.title+"</h3>";
         $content.innerHTML = response.content;
         $date.innerHTML = nowDate;
-
     }
 })
