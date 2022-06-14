@@ -11,7 +11,11 @@ const $inputBtn = document.querySelector('#input_btn');
 
 $inputBtn.addEventListener('change', ()=>{
     const imgSrc = URL.createObjectURL($inputBtn.files[0]);
-    $content.innerHTML += `<img src="${imgSrc}"/>`;
+    for (let i = 0; i < $inputBtn.files.length; i++) {
+        const file = $inputBtn.files[i];
+        const imgSrc = URL.createObjectURL(file);
+        $content.innerHTML += `<img src="${imgSrc}"/>`
+    }
 })
 
 $.ajax({
@@ -27,8 +31,6 @@ $.ajax({
         bid = response.board.bid;
     }
 })
-
-console.log(bid);
 
 $form.addEventListener('click', (e)=>{
     e.preventDefault();

@@ -22,6 +22,7 @@ async function renderCalender() {
         success: function(response){
             thum = response;
             console.log("get thumnails@@@");
+            console.log(response);
         },
         error: function(jqXHR, textStatus){
             console.log(textStatus);
@@ -62,9 +63,11 @@ async function renderCalender() {
         const condition = i >= firstDateIndex && i < lastDateIndex + 1
             ? 'this'
             : 'other';
-        if(date.toString() in thum){
-            var src = thum[date.toString()];
+        
+        if(date.toString().padStart(2, '0') in thum){
+            var src = thum[date.toString().padStart(2, '0')];
             console.log(src);
+            console.log(date.toString().padStart(2, '0'));
             dates[i] = `<div class="date" style="cursor: pointer; background-image: url('${src}'); background-size:cover;"><span class=${condition}>${date}</span></div>`;
         }else{
             dates[i] = `<div class="date" style="cursor: pointer;"><span class=${condition}>${date}</span></div>`;
