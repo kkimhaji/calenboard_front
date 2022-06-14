@@ -86,6 +86,8 @@ body {
     text-align: right;
     border-bottom: 1px solid #333333;
     border-left: 1px solid #333333;
+    background-size: cover;
+    opacity: 0.7;
 }
 
 .day:nth-child(7n + 1),
@@ -189,9 +191,9 @@ input{
     justify-items: left;
 }
 
-
-.inputimg{
+img{
     max-width: 100%;
+
 }
 
 #in_content{
@@ -225,3 +227,9 @@ h1{
 #listBtn{
     justify-items: end;
 }
+
+/* .date span{
+    background-color: #D0D0D0;
+    border-radius: 2;
+    border: hidden;
+} */

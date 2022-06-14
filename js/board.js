@@ -2,14 +2,33 @@ let date = new Date(); //현재
 let nowDate;
 let ym = "";
 let url = "http://localhost:8082/board/";
+// let thum;
+
+let keys;
 
 
-const renderCalender = () => {
+async function renderCalender() {
     const viewYear = date.getFullYear();
     const viewMonth = date.getMonth();
     let month = (viewMonth+1).toString().padStart(2, '0');
-    // month.toString().length < 2 ? '0' + month : month;
-    ym = viewYear+"-"+month+"-";
+
+    ym = viewYear+"-"+month;
+
+    await $.ajax({
+        url: `http://localhost:8082/board/getMonthly?nowYM=${ym}`,
+        typee:'GET',
+        dataType: 'json',
+        headers: {"X-AUTH-TOKEN": sessionStorage.getItem("X-AUTH-TOKEN")},
+        success: function(response){
+            thum = response;
+            console.log("get thumnails@@@");
+        },
+        error: function(jqXHR, textStatus){
+            console.log(textStatus);
+        }
+    });
+
+    ym+="-";
 
     document.querySelector('.year-month').textContent = `${viewYear}년 ${viewMonth + 1}월`;
 
@@ -39,22 +58,28 @@ const renderCalender = () => {
     const dates = prevDates.concat(thisDates, nextDates);
     const firstDateIndex = dates.indexOf(1);
     const lastDateIndex = dates.lastIndexOf(TLDate);
-
     dates.forEach((date, i) => {
         const condition = i >= firstDateIndex && i < lastDateIndex + 1
             ? 'this'
             : 'other';
-        dates[i] = `<div class="date" style="cursor: pointer;"><span class=${condition}>${date}</span></div>`;
+        if(date.toString() in thum){
+            var src = thum[date.toString()];
+            console.log(src);
+            dates[i] = `<div class="date" style="cursor: pointer; background-image: url('${src}'); background-size:cover;"><span class=${condition}>${date}</span></div>`;
+        }else{
+            dates[i] = `<div class="date" style="cursor: pointer;"><span class=${condition}>${date}</span></div>`;
+        }
+        
+
     });
 
     document.querySelector('.dates').innerHTML = dates.join('');
     let $day = document.querySelectorAll('.date');
     $day.forEach((day)=>{
         if(day.querySelector('span').className == 'this'){
+
             day.addEventListener('click', function (){
                 nowDate = ym + day.innerText.padStart(2, '0');
-                console.log("nowDate: " , nowDate);
-                localStorage.setItem("nowDate", nowDate);
                 $.ajax({
                     url: `http://localhost:8082/board/postexist?nowDate=${nowDate}`,
                     type: 'GET',

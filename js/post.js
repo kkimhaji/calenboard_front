@@ -10,9 +10,16 @@ $date.value = nowDate;
 const $inputBtn = document.querySelector('.input_btn');
 
 $inputBtn.addEventListener('change', ()=>{
-    const imgSrc = URL.createObjectURL($inputBtn.files[0]);
-    $content.innerHTML += `<img class="inputimg" src="${imgSrc}"/>`
+    for (let i = 0; i < $inputBtn.files.length; i++) {
+        const file = $inputBtn.files[i];
+        const imgSrc = URL.createObjectURL(file);
+        $content.innerHTML += `<img src="${imgSrc}"/>`
+    }
 
+})
+
+document.querySelector('#listBtn').addEventListener('click', () =>{
+    window.location = '/board/';
 })
 
 $form.addEventListener('click', (e)=>{

@@ -11,7 +11,7 @@ const $inputBtn = document.querySelector('#input_btn');
 
 $inputBtn.addEventListener('change', ()=>{
     const imgSrc = URL.createObjectURL($inputBtn.files[0]);
-    $content.innerHTML += `<img class="inputimg" src="${imgSrc}"/>`;
+    $content.innerHTML += `<img src="${imgSrc}"/>`;
 })
 
 $.ajax({
@@ -71,4 +71,8 @@ $form.addEventListener('click', (e)=>{
             console.log(textStatus);
         }
     })
+})
+
+document.querySelector('#listBtn').addEventListener('click', () =>{
+    window.location = '/board/';
 })
