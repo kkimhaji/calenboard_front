@@ -44,35 +44,37 @@ const renderCalender = () => {
         const condition = i >= firstDateIndex && i < lastDateIndex + 1
             ? 'this'
             : 'other';
-        dates[i] = `<div class="date"><span class=${condition}>${date}</span></div>`;
+        dates[i] = `<div class="date" style="cursor: pointer;"><span class=${condition}>${date}</span></div>`;
     });
 
     document.querySelector('.dates').innerHTML = dates.join('');
     let $day = document.querySelectorAll('.date');
     $day.forEach((day)=>{
-        day.addEventListener('click', function (){
-            nowDate = ym + day.innerText.padStart(2, '0');
-            console.log("nowDate: " , nowDate);
-            localStorage.setItem("nowDate", nowDate);
-            $.ajax({
-                url: `http://localhost:8082/board/postexist?nowDate=${nowDate}`,
-                type: 'GET',
-                dataType:'json',
-                headers:{"X-AUTH-TOKEN": sessionStorage.getItem("X-AUTH-TOKEN")},
-                success: function (response){
-                    console.log(response);
-                    if(response){
-                        window.location = `board/view?${nowDate}`;
-                    }else{
-                        window.location = `board/post?${nowDate}`;
+        if(day.querySelector('span').className == 'this'){
+            day.addEventListener('click', function (){
+                nowDate = ym + day.innerText.padStart(2, '0');
+                console.log("nowDate: " , nowDate);
+                localStorage.setItem("nowDate", nowDate);
+                $.ajax({
+                    url: `http://localhost:8082/board/postexist?nowDate=${nowDate}`,
+                    type: 'GET',
+                    dataType:'json',
+                    headers:{"X-AUTH-TOKEN": sessionStorage.getItem("X-AUTH-TOKEN")},
+                    success: function (response){
+                        if(response){
+                            window.location = `/board/view?${nowDate}`;
+                        }else{
+                            window.location = `/board/post?${nowDate}`;
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown){
+                        console.log(textStatus);
                     }
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-                    console.log(textStatus);
-                }
-            });
-        })
+                });
+            })
+        }
     });
+
 
     const today = new Date();
     if (viewMonth === today.getMonth() && viewYear === today.getFullYear()) {

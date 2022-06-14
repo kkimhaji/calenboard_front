@@ -21,8 +21,8 @@ $form.addEventListener('submit', (e)=>{
         contentType: false,
         processData: false,
         success: function (response){
-            console.log(response);
-            window.location = "/";
+
+            window.location = "/board";
             if(response.data) sessionStorage.setItem("X-AUTH-TOKEN", response.data);
         },
         error: function (jqXHR, textStatus, errorThrown){

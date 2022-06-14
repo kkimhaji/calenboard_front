@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
-<title>글 작성</title>
+<title>글 수정</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
     <header onclick="location.href='/board'" style="cursor: pointer;"><h1>Calen-Board</h1></header>
-    <div id="container">
-        <h2>글 작성</h2>
-            <div id="write_area">
 
+    <div id="container">
+        <h2>글 수정</h2>
+            <div id="write_area">
+                <!-- <form  method="post" id="form" enctype="multipart/form-data"> -->
                 <div id="form">
                     <div id="in_title">
                         <textarea name="title" id="title" rows="1" placeholder="제목" maxlength="100" required></textarea>
@@ -18,25 +19,22 @@
                     
                     <div class="wi_line"></div>
                     <div id="in_content">
-
-                        <div name="content" contenteditable="true" id="content_box" aria-label="내용" style="text-align: left;"></div>
-
+                        <div name="content" contenteditable="true" id="content_box" aria-label="내용"></div>
                     </div>
                         <div>
                             <p>날짜: 
                             <input type="text" id="date" name="date" placeholder="등록할 날짜를 입력해주세요">
                             </p>
                         </div>
-                        <div id = "input_area">
-                            <input type="file" name="uploadFiles" class="input_btn" multiple />
-
+                        <div>
+                            <input type="file" name="uploadFiles" id="input_btn" multiple />
                         </div>
 
                     <div class="bt_se">
                         <button class="btn" id="btn">글 작성</button>
                     </div>
                 </div>
-            </div>
+                <!-- </form> -->
             </div>
         </div>
         <div>
@@ -45,5 +43,5 @@
         </div>
 
     </body>
-    <script src="/js/post.js"></script>
+    <script src="/js/update.js"></script>
 </html>

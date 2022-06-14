@@ -17,10 +17,10 @@ body {
 }
 #header{
     margin: 10px;
-    padding: 15px;
+    padding-top: 30px;
     font-weight: 700;
     font-size: 3em;
-
+    height: 150px;
 }
 .calendar {
     width: 85%;
@@ -36,6 +36,7 @@ body {
 
 .year-month {
     font-size: 35px;
+    font-weight: 700;
 }
 
 .nav {
@@ -68,6 +69,7 @@ body {
 .day {
     width: calc(100% / 7);
     text-align: center;
+    font-size: 1.5em;
 }
 
 .dates {
@@ -119,7 +121,7 @@ body {
     content: '';
 }
 
-#btn {
+.btn {
     background-color: #007bff;
     border-color: #007bff;
     max-width: 200px;
@@ -127,6 +129,9 @@ body {
     padding: 0.5rem 1rem;
     font-size: 1.25rem;
     border-radius: 0.3rem;
+    color: #fff;
+    margin: 10px;
+    cursor: pointer;
 }
 
 #container {
@@ -135,6 +140,7 @@ body {
     margin-right: auto;
     padding-right: 15px;
     padding-left: 15px;
+    padding-top:20px;
     background-color: white;
     border-radius: 0.8rem;
     min-height: 100%;
@@ -152,4 +158,70 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+textarea{
+    text-align: left;
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.25;
+    margin: 10px;
+}
+
+input{
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.25;
+    margin: 10px;
+}
+
+#content_box{
+    min-height: 500px;
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.25;
+    margin: 0 auto;
+    border: 1px solid #333333;
+    text-align: left;
+    align-items: left;
+    justify-items: left;
+}
+
+
+.inputimg{
+    max-width: 100%;
+}
+
+#in_content{
+    min-height: 400px;
+    padding:15px;
+    text-align: left;
+}
+
+#write_area{
+    line-height: 1.5;
+    margin-top: 20px;
+}
+
+#date_box{
+    margin: 10px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#title{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 2;
+}
+
+h1{
+    margin: 10px;
+    padding: 10px;
+}
+
+#listBtn{
+    justify-items: end;
 }
