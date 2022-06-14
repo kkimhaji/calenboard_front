@@ -217,16 +217,11 @@ img{
     font-size: 20px;
     font-weight: 600;
     line-height: 2;
-    width: auto;
 }
 
 h1{
     margin: 10px;
     padding: 10px;
-}
-
-#listBtn{
-    /* display: inline-block; */
 }
 
 /* .date span{

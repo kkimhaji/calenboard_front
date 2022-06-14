@@ -64,7 +64,7 @@ async function renderCalender() {
             ? 'this'
             : 'other';
         
-        if(date.toString().padStart(2, '0') in thum){
+        if(date.toString().padStart(2, '0') in thum && condition=='this'){
             var src = thum[date.toString().padStart(2, '0')];
             console.log(src);
             console.log(date.toString().padStart(2, '0'));
