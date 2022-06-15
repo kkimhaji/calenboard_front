@@ -16,11 +16,13 @@ body {
     line-height: 1.5;
 }
 #header{
-    margin: 10px;
-    padding-top: 30px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding-top: 10px;
     font-weight: 700;
     font-size: 3em;
-    height: 150px;
+    height: 100px;
+    width: 80%;
 }
 .calendar {
     width: 85%;
@@ -88,6 +90,7 @@ body {
     border-left: 1px solid #333333;
     background-size: cover;
     opacity: 0.7;
+
 }
 
 .day:nth-child(7n + 1),
@@ -208,9 +211,10 @@ img{
 }
 
 #date_box{
-    margin: 10px;
+    margin: 0 auto;
     padding: 10px;
     font-size: 18px;
+    width: 80%;
 }
 
 #title{
@@ -224,8 +228,55 @@ h1{
     padding: 10px;
 }
 
+h2{
+    font-size: 30px;
+}
+
 /* .date span{
     background-color: #D0D0D0;
     border-radius: 2;
     border: hidden;
 } */
+
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0; /*쓸 데 없는 공백 제거*/
+    padding: 0; /*쓸 데 없는 공백 제거*/
+
+    list-style-type: none; /*목록 기호 제거*/
+}
+nav{
+    float: right;
+    margin-right: 20px;
+}
+
+.nav-item {
+    padding: 15px;
+    cursor: pointer; /*마우스 커서를 pointer 모양으로 함*/
+}
+.nav-item a { /*nav-item 클래스 아래의 a 요소를 선택함*/
+    text-align: center;
+    text-decoration: none; /*밑줄 없앰*/
+    color: #333333;
+    font-weight: bold;
+}
+
+.notice{
+    margin: 30px;
+}
+
+.btn-login{
+    font-size: 20px;
+}
+
+.listBtn{
+    float: right;
+}
+
+#in_title{
+    margin: 0 auto;
+    width: 80%;
+}

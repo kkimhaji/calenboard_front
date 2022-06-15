@@ -4,7 +4,14 @@ const nowDate = location.href.split('?')[1];
 const $content = document.querySelector('#content_box');
 const $title = document.querySelector('#title');
 const $date = document.querySelector('#date');
-
+$.ajax({
+    url:"http://localhost:8082/token",
+    type: 'POST',
+    headers:{"X-AUTH-TOKEN": sessionStorage.getItem("X-AUTH-TOKEN")},
+    success:function(response){
+        if(!response) window.location = '/login';
+    }
+})
 $date.value = nowDate;
 
 const $inputBtn = document.querySelector('.input_btn');

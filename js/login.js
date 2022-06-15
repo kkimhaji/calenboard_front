@@ -2,6 +2,10 @@ let url = "http://localhost:8082/signin";
 
 const $form = document.querySelector('#form');
 
+document.querySelector('#gosignup').addEventListener('click', ()=>{
+    window.location = '/signup';
+})
+
 $form.addEventListener('submit', (e)=>{
     e.preventDefault();
     let sdata = new URLSearchParams();

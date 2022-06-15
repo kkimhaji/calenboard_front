@@ -1,6 +1,9 @@
 let url = "http://localhost:8082/signup";
 
 const $form = document.querySelector('#form');
+document.querySelector('#gologin').addEventListener('click', ()=>{
+    window.location = '/login';
+})
 
 $form.addEventListener('submit', (e)=>{
     e.preventDefault();

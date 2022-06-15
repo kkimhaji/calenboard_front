@@ -1,10 +1,18 @@
-const $title = document.querySelector("#title");
+const $title = document.querySelector("#in_title");
 const $content = document.querySelector("#in_content");
 const $date = document.querySelector("#date");
 const nowDate = location.href.split('?')[1];
 var bid = 0;
 let bData;
 
+$.ajax({
+    url:"http://localhost:8082/token",
+    type: 'POST',
+    headers:{"X-AUTH-TOKEN": sessionStorage.getItem("X-AUTH-TOKEN")},
+    success:function(response){
+        if(!response) window.location = '/login';
+    }
+})
 
 $.ajax({
     url: `http://localhost:8082/board/getbydate?nowDate=${nowDate}`,
@@ -12,10 +20,9 @@ $.ajax({
     dataType: 'json',
     headers: {"X-AUTH-TOKEN": sessionStorage.getItem("X-AUTH-TOKEN")},
     success:function(response){
-        console.log(response);
         $title.innerHTML = "<h2>"+response.board.title+"</h2>";
         $content.innerHTML = response.board.content;
-        $date.innerHTML = nowDate;
+        $date.innerHTML += nowDate;
         bid = response.board.bid;
     }
 })
@@ -32,9 +39,11 @@ function displayPhoto(response){
     content.split("")
 }
 
-document.querySelector('#listBtn').addEventListener('click', () =>{
-    window.location = '/board/';
-})
+document.querySelectorAll('.listBtn').forEach((btn)=>{
+    btn.addEventListener('click', () =>{
+        window.location = '/board/';
+    })
+});
 
 document.querySelector('#delBtn').addEventListener('click', ()=>{
 

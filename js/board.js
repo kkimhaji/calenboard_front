@@ -5,7 +5,22 @@ let url = "http://localhost:8082/board/";
 // let thum;
 
 let keys;
+$.ajax({
+    url:"http://localhost:8082/token",
+    type: 'POST',
+    headers:{"X-AUTH-TOKEN": sessionStorage.getItem("X-AUTH-TOKEN")},
+    success:function(response){
+        if(!response) window.location = '/login';
+    }
+})
+document.querySelector('#login').addEventListener('click', ()=>{
+    window.location = '/login';
+});
 
+document.querySelector('#logout').addEventListener('click', ()=>{
+    sessionStorage.clear();
+    window.location = '/login';
+});
 
 async function renderCalender() {
     const viewYear = date.getFullYear();
@@ -21,11 +36,10 @@ async function renderCalender() {
         headers: {"X-AUTH-TOKEN": sessionStorage.getItem("X-AUTH-TOKEN")},
         success: function(response){
             thum = response;
-            console.log("get thumnails@@@");
-            console.log(response);
         },
-        error: function(jqXHR, textStatus){
-            console.log(textStatus);
+        error: function(request, status, error, responseText, errorThrown){
+            // alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            console.log(errorThrown);
         }
     });
 
@@ -66,8 +80,6 @@ async function renderCalender() {
         
         if(date.toString().padStart(2, '0') in thum && condition=='this'){
             var src = thum[date.toString().padStart(2, '0')];
-            console.log(src);
-            console.log(date.toString().padStart(2, '0'));
             dates[i] = `<div class="date" style="cursor: pointer; background-image: url('${src}'); background-size:cover;"><span class=${condition}>${date}</span></div>`;
         }else{
             dates[i] = `<div class="date" style="cursor: pointer;"><span class=${condition}>${date}</span></div>`;
